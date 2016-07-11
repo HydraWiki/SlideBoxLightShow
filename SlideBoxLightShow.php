@@ -21,6 +21,7 @@ $credits = [
 	'author'			=> ['Alexia E. Smith', 'Curse Inc&copy;'],
 	'license-name'		=> 'GPL-3.0',
 	'descriptionmsg'	=> 'slideboxlightshow_description',
+	'url'				=> 'https://github.com/HydraWiki/SlideBoxLightShow',
 	'version'			=> '1.2'
 ];
 $wgExtensionCredits['parserhook'][] = $credits;
