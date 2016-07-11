@@ -1,0 +1,252 @@
+.slideboxlightshow {
+	display: block;
+	overflow: hidden;
+	position: relative;
+}
+
+	.slideboxlightshow img {
+		vertical-align: inherit;
+	}
+
+a.sbls-image, div.sbls-image {
+	display: block;
+	position: absolute;
+}
+
+body:after {
+	content:url(../images/close.png) url(../images/loading.gif) url(../images/prev.png) url(../images/next.png);
+	display:none;
+}
+
+.lightboxOverlay {
+	background-color:#000;
+	display:none;
+	filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
+	left:0;
+	opacity:0.8;
+	position:absolute;
+	top:0;
+	z-index:9999;
+}
+
+.lightbox {
+	font-weight:400;
+	left:0;
+	line-height:0;
+	position:absolute;
+	text-align:center;
+	width:100%;
+	z-index:10000;
+}
+
+.lightbox .lb-image {
+	-moz-border-radius:3px;
+	-ms-border-radius:3px;
+	-o-border-radius:3px;
+	-webkit-border-radius:3px;
+	border-radius:3px;
+	display:block;
+	height:auto;
+}
+
+.lightbox a img {
+	border:none;
+}
+
+.lb-outerContainer {
+	-moz-border-radius:4px;
+	-ms-border-radius:4px;
+	-o-border-radius:4px;
+	-webkit-border-radius:4px;
+	background-color:#FFF;
+	border-radius:4px;
+	height:250px;
+	margin:0 auto;
+	position:relative;
+	width:250px;
+	zoom:1;
+}
+
+.lb-outerContainer:after {
+	clear:both;
+	content:"";
+	display:table;
+}
+
+.lb-container {
+	padding:4px;
+}
+
+.lb-loader {
+	height:25%;
+	left:0;
+	line-height:0;
+	position:absolute;
+	text-align:center;
+	top:43%;
+	width:100%;
+}
+
+.lb-cancel {
+	background:url(../images/loading.gif) no-repeat;
+	display:block;
+	height:32px;
+	margin:0 auto;
+	width:32px;
+}
+
+.lb-nav {
+	height:100%;
+	left:0;
+	position:absolute;
+	top:0;
+	width:100%;
+	z-index:10;
+}
+
+.lb-container > .nav {
+	left:0;
+}
+
+.lb-nav a {
+	outline:none;
+}
+
+.lb-prev,.lb-next {
+	cursor:pointer;
+	display:block;
+	height:100%;
+	width:49%;
+}
+
+.lb-prev {
+	float:left;
+	left:0;
+}
+
+.lb-prev:hover {
+	background:url(../images/prev.png) left 48% no-repeat;
+}
+
+.lb-next {
+	float:right;
+	right:0;
+}
+
+.lb-next:hover {
+	background:url(../images/next.png) right 48% no-repeat;
+}
+
+.lb-dataContainer {
+	-moz-border-radius-bottomleft:4px;
+	-moz-border-radius-bottomright:4px;
+	-webkit-border-bottom-left-radius:4px;
+	-webkit-border-bottom-right-radius:4px;
+	border-bottom-left-radius:4px;
+	border-bottom-right-radius:4px;
+	margin:0 auto;
+	padding-top:5px;
+	width:100%;
+	zoom:1;
+}
+
+.lb-dataContainer:after {
+	clear:both;
+	content:"";
+	display:table;
+}
+
+.lb-data {
+	color:#bbb;
+	padding:0 4px;
+}
+
+.lb-data .lb-details {
+	float:left;
+	line-height:1.1em;
+	text-align:left;
+	width:85%;
+}
+
+.lb-data .lb-caption {
+	font-size:13px;
+	font-weight:700;
+	line-height:1em;
+}
+
+.lb-data .lb-number {
+	clear:left;
+	color:#999;
+	display:block;
+	font-size:12px;
+	padding-bottom:1em;
+}
+
+.lb-data .lb-close {
+	background:url(../images/close.png) top right no-repeat;
+	display:block;
+	filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=70);
+	float:right;
+	height:30px;
+	opacity:0.7;
+	outline:none;
+	text-align:right;
+	width:30px;
+}
+
+.lb-data .lb-close:hover {
+	cursor:pointer;
+	filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+	opacity:1;
+}
+
+.sbls-description {
+	background: none repeat scroll 0 0 rgba(0, 0, 0, 0.5);
+	bottom: 0;
+	color: #FFFFFF;
+	display: block;
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-size: 1.2em;
+	height: 10%;
+	left: 0;
+	line-height: 1em;
+	padding: 1%;
+	position: absolute;
+	text-align: left;
+	width: 98%;
+	z-index: 10000;
+}
+
+.sbls-carousel {
+	background: none repeat scroll 0 0 black;
+	display: inline-block;
+}
+
+.sbls-nav {
+	height: 40px;
+	width: 100%;
+	z-index: 10;
+}
+
+.sbls-nav a {
+	background: none repeat scroll 0 0 black;
+	color: rgba(255, 255, 255, 0.75);
+	cursor: pointer;
+	display: inline-block;
+	font-size: 6em;
+	height: 100%;
+	line-height: 40px;
+	padding-bottom: 2px;
+	text-align: center;
+	text-decoration: none;
+	width: 50%;
+}
+
+.sbls-nav a:hover {
+	color: rgba(255, 255, 255, 1);
+	text-decoration: none;
+}
+
+.sbls-nav a:active {
+	color: rgba(255, 255, 255, 0.5);
+}
