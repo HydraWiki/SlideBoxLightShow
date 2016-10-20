@@ -119,7 +119,7 @@ class SlideBoxLightShowHooks {
 					$_title = Title::newFromText($link);
 					if (filter_var($link, FILTER_VALIDATE_URL)) {
 						$link = $link;
-					} elseif ($_title->isKnown()) {
+					} elseif (!empty($_title) && $_title->isKnown()) {
 						$link = $_title->getFullURL();
 					} else {
 						$link = false;
