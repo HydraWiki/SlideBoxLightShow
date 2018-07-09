@@ -53,15 +53,10 @@ class SlideBoxLightShowHooks {
 	 * @return	void
 	 */
 	static public function init() {
-		global $sbDefaultArguments;
-		if (!self::$initialized) {
-			define('SB_EXT_DIR', dirname(__FILE__));
-
-			if (is_array($sbDefaultArguments) && count($sbDefaultArguments)) {
-				self::$defaultArguments = array_merge(self::$defaultArguments, $sbDefaultArguments);
-			}
-
-			self::$initialized = true;
+		$config = \MediaWiki\MediaWikiServices::getInstance()->getMainConfig();
+		$sbDefaultArguments = $config->get('SBDefaultArguments');
+		if (is_array($sbDefaultArguments) && count($sbDefaultArguments)) {
+			self::$defaultArguments = array_merge(self::$defaultArguments, $sbDefaultArguments);
 		}
 	}
 
@@ -92,7 +87,6 @@ class SlideBoxLightShowHooks {
 	 */
 	static public function slideBoxLightShow($items, array $arguments, Parser $parser, PPFrame $frame) {
 		global $wgScriptPath;
-		self::init();
 
 		$parser->getOutput()->addModules('ext.slideboxlightshow');
 
@@ -112,8 +106,8 @@ class SlideBoxLightShowHooks {
 				$files[] = ['html' => $parser->recursiveTagParse($info)];
 			} else {
 				$info = explode('|', $info);
-				$description = $info[1];
-				$link = $info[2];
+				$description = isset($info[1]) ? $info[1] : null;
+				$link = isset($info[2]) ? $info[2] : null;
 
 				if ($link) {
 					$_title = Title::newFromText($link);
@@ -208,11 +202,11 @@ class SlideBoxLightShowHooks {
 					</div>";
 		if ($arguments['carousel'] || $arguments['slideshowonly']) {
 			$fileHTML .= "
-					<div class='sbls-nav'><a class='sbls-prev'>←</a><a class='sbls-next'>→</a></div>
+					<div class='sbls-nav'><a class='sbls-prev'><span>&lt;</span></a><a class='sbls-next'><span>&gt;</span></a></div>
 			</div>";
 		}
 
-		if (MW_API === true) {
+		if (defined('MW_API') && MW_API === true) {
 			$fileHTML .= "<script type='text/javascript'>mw.loader.load('ext.slideboxlightshow');</script>";
 		}
 
@@ -255,7 +249,7 @@ class SlideBoxLightShowHooks {
 		}
 		self::$md5Sets[] = $md5Set;
 
-		return $md5Set;
+		return $md5Set.'-'.str_replace('.', '', microtime(true));
 	}
 
 	/**

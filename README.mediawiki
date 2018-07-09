@@ -1,0 +1,87 @@
+=SlideBoxLightShow=
+
+The '''SlideBoxLightShow''' extension organizes a list of images into a slide show that can be popped up into a light box style display.
+
+==Usage==
+{| class="wikitable"
+|+ Attributes for the slideboxlightshow tag
+|-
+! Attribute
+! Description
+|-
+| <code>sequence="<nowiki>[forward|reverse|random]</nowiki>"</code>
+| '''Default:''' forward
+  The sequence in which images are rotated.
+|-
+| <code>transition="<nowiki>[fade|left|right|up|down]</nowiki>"</code>
+| '''Default:''' fade
+  Transition type used to change images.
+|-
+| <code>transitionSpeed="<nowiki>[milliseconds]</nowiki>"</code>
+| '''Default:''' 500
+  Time in milliseconds that transitions last.  '''Tip:''' Setting the transition speed to 0 with a fade transition will result in an instant cut transition.
+|-
+| <code>halign="<nowiki>[left|center|right]</nowiki>"</code>
+| '''Default:''' center
+  Position to horizontally align images.
+|-
+| <code>valign="<nowiki>[top|middle|bottom]</nowiki>"</code>
+| '''Default:''' middle
+  Position to vertically align images.
+|-
+| <code>interval="<nowiki>[milliseconds]</nowiki>"</code>
+| '''Default:''' 5000
+  Time in milliseconds to display each image.
+|-
+| <code>width="<nowiki>[pixels]</nowiki>"</code>
+| '''Default:''' null - Width of the widest image.
+  Sets the width of the box and the maximum width behavior of images in pixels.
+|-
+| <code>height="<nowiki>[pixels]</nowiki>"</code>
+| '''Default:''' null - Height of the highest image.
+  Sets the height of the box and the maximum height behavior of images in pixels.
+|-
+| <code>popup="<nowiki>[true|false]</nowiki>"</code>
+| '''Default:''' true - Show lightbox pop ups.
+  Enables or disables showing lightbox style pop ups when clicking on an image.  Adding a link on an image disables pop ups.
+|-
+| <code>slideshowOnly="<nowiki>[true|false]</nowiki>"</code>
+| '''Default:''' false - Use both slideshow and lightbox functionality.
+  Turns on using the slideshow only and allow navigation with arrows on the slideshow.  Using this option causes the popup option to be ignored and default to false.
+|-
+| <code>carousel="<nowiki>[true|false]</nowiki>"</code>
+| '''Default:''' false
+  Carousel mode is a special mode that allows any content to be placed into slides only.  Anything on a new line will be treated as a separate slide and can include parser functions, parser tags, and other standard Mediawiki elements.  Enabling this mode disables popups and forces slideshowonly mode to true.
+|}
+
+Enter one properly namespaced file name per line.  Any files that do not exist will be silently dropped.  Descriptions and URL links can be added images by piping it behind the image name.  Example: <code><nowiki>File:Image3.jpg|Check out this picture!|http://www.example.com/</nowiki></code>  Omitting the description is allowed to use a link only by leaving the space for the description blank.  Example: <code><nowiki>File:Image3.jpg||http://www.example.com/</nowiki></code>  Descriptions can be formatted using HTML tags such as <code>&lt;i></code>. Example: <code><nowiki>File:Image3.jpg|Check out <i>this</i> picture!</nowiki></code>
+<pre>
+File:Image1.jpg
+File:Image2.jpg||http://www.example.com/
+File:Image3.jpg|Check out this picture!
+</pre>
+
+===Example===
+This example shows three images changing at an interval of 1000 milliseconds.
+<pre><slideboxlightshow interval="1000">
+File:BenUser2.png
+File:Wyn.png
+File:Curse_flame.png|This is the Curse Flame
+</slideboxlightshow></pre>
+<slideboxlightshow interval="1000">
+File:BenUser2.png
+File:Wyn.png
+File:Curse_flame.png|This is the Curse Flame
+</slideboxlightshow>
+
+==Configuration Settings==
+{| class="wikitable"
+|--
+! Variable
+! Default Value
+! Description
+|--
+| $wgSBDefaultArguments
+|
+| Takes an array of defaults.  The keys are the same as attributes on the function tag, but all in lowercase.
+|}

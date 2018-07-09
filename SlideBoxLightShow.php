@@ -12,37 +12,15 @@
  *
  **/
 
-/******************************************/
-/* Credits								  */
-/******************************************/
-$credits = [
-	'path'				=> __FILE__,
-	'name'				=> 'Slide Box Light Show',
-	'author'			=> ['Alexia E. Smith', 'Curse Inc&copy;'],
-	'license-name'		=> 'GPL-3.0',
-	'descriptionmsg'	=> 'slideboxlightshow_description',
-	'url'				=> 'https://github.com/HydraWiki/SlideBoxLightShow',
-	'version'			=> '1.2'
-];
-$wgExtensionCredits['parserhook'][] = $credits;
-
-/******************************************/
-/* Language Strings, Page Aliases, Hooks  */
-/******************************************/
-$extDir = __DIR__;
-
-$wgExtensionMessagesFiles['SlideBoxLightShow']	= "{$extDir}/SlideBoxLightShow.i18n.php";
-$wgMessagesDirs['SlideBoxLightShow']			= "{$extDir}/i18n";
-
-$wgAutoloadClasses['SlideBoxLightShowHooks']	= "{$extDir}/SlideBoxLightShow.hooks.php";
-
-$wgHooks['ParserFirstCallInit'][]				= 'SlideBoxLightShowHooks::onParserFirstCallInit';
-
-$wgResourceModules['ext.slideboxlightshow'] = [
-	'localBasePath' => $extDir,
-	'remoteExtPath' => 'SlideBoxLightShow',
-	'styles'		=> ['css/slideboxlightshow.css'],
-	'scripts'		=> ['js/slideboxlightshow.js', 'js/lightbox.js'],
-	'targets'		=> ['desktop', 'mobile']
-];
-
+if ( function_exists( 'wfLoadExtension' ) ) {
+	wfLoadExtension( 'SlideBoxLightShow' );
+	// Keep i18n globals so mergeMessageFileList.php doesn't break
+	$wgMessagesDirs['SlideBoxLightShow'] = __DIR__ . '/i18n';
+	wfWarn(
+		'Deprecated PHP entry point used for SlideBoxLightShow extension. Please use wfLoadExtension instead, ' .
+		'see https://www.mediawiki.org/wiki/Extension_registration for more details.'
+	);
+	return;
+ } else {
+	die( 'This version of the SlideBoxLightShow extension requires MediaWiki 1.25+' );
+}

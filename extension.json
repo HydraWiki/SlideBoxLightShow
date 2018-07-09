@@ -1,0 +1,64 @@
+{
+	"name": "Slide Box Light Show",
+	"version": "2.0",
+	"author": [
+		"Alexia E. Smith",
+		"Curse Inc&copy;"
+	],
+	"url": "https://github.com/HydraWiki/SlideBoxLightShow",
+	"descriptionmsg": "slideboxlightshow_description",
+	"license-name": "GPL-3.0",
+	"type": "parserhook",
+	"MessagesDirs": {
+		"SlideBoxLightShow": [
+			"i18n"
+		]
+	},
+	"AutoloadClasses": {
+		"SlideBoxLightShowHooks": "SlideBoxLightShow.hooks.php"
+	},
+	"ResourceModules": {
+		"ext.slideboxlightshow": {
+			"styles": [
+				"css/slideboxlightshow.css"
+			],
+			"scripts": [
+				"js/slideboxlightshow.js",
+				"js/lightbox.js"
+			],
+			"targets": [
+				"desktop",
+				"mobile"
+			]
+		}
+	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "",
+		"remoteExtPath": "SlideBoxLightShow"
+	},
+	"Hooks": {
+		"ParserFirstCallInit": "SlideBoxLightShowHooks::onParserFirstCallInit"
+	},
+	"config": {
+		"SBDefaultArguments": {
+			"value": {
+				"sequence": "forward",
+				"transition": "fade",
+				"transitionspeed": 500,
+				"halign": "center",
+				"valign": "middle",
+				"interval": 5000,
+				"width": null,
+				"height": null,
+				"popup": true,
+				"slideshowonly": false,
+				"carousel": false
+			},
+			"path": false,
+			"descriptionmsg": "dynamicsettings-config-sbdefaultarguments",
+			"public": false,
+			"merge_strategy": "array_merge"
+		}
+	},
+	"manifest_version": 2
+}
